@@ -76,8 +76,14 @@ export function Gallery() {
                 onPointerMove={reduce ? undefined : tilt}
                 onPointerLeave={reduce ? undefined : untilt}
               >
-                {photo.src ? <img src={photo.src} alt="" /> : null}
-                <span className={styles.year}>{photo.year}</span>
+                {photo.src ? (
+                  <img
+                    src={photo.src}
+                    alt={photo.alt ?? photo.caption}
+                    style={photo.focus ? { objectPosition: photo.focus } : undefined}
+                  />
+                ) : null}
+                {photo.year ? <span className={styles.year}>{photo.year}</span> : <span />}
                 <figcaption className={styles.caption}>{photo.caption}</figcaption>
               </motion.figure>
             </motion.div>

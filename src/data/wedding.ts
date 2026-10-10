@@ -35,6 +35,9 @@ export type GalleryPhoto = {
   size: FrameSize
   /** Set to an image path in /public or an imported URL when photographs are ready. */
   src?: string
+  alt?: string
+  /** CSS object-position, so a crop keeps the faces. */
+  focus?: string
 }
 
 export const wedding = {
@@ -54,8 +57,8 @@ export const wedding = {
     eyebrow: "Together with their families",
     invite: "We invite you to celebrate our wedding",
     date: "[WEDDING DATE]",
-    venue: "[VENUE]",
-    city: "[CITY]",
+    venue: "Aser El Bouhayra",
+    city: "Zaarour",
     sideline: "A celebration",
     scroll: "Scroll",
   },
@@ -116,7 +119,7 @@ export const wedding = {
       {
         id: "venue",
         label: "Venue",
-        primary: "[VENUE NAME]",
+        primary: "Aser El Bouhayra",
         secondary: "[ADDRESS]",
         note: "[CITY]",
       },
@@ -133,9 +136,8 @@ export const wedding = {
   venue: {
     index: "03",
     kicker: "The place",
-    title: "[VENUE NAME]",
-    address: "[ADDRESS]",
-    city: "[CITY]",
+    title: "Aser El Bouhayra",
+    address: "Zaarour",
     note: "[A SENTENCE ABOUT ARRIVING HERE]",
     mapCaption: "[MAP]",
   },
@@ -157,10 +159,28 @@ export const wedding = {
     kicker: "Memories",
     title: "Fragments we love",
     intro:
-      "Photographs will live in these frames. Until then, each one holds a place for a moment you choose.",
+      "Two photographs from a sunlit afternoon, and room beside them for the moments still to come.",
     photos: [
-      { id: "m1", year: "2019", caption: "[MEMORY]", tone: "sage", size: "tall" },
-      { id: "m2", year: "2020", caption: "[MEMORY]", tone: "champagne", size: "short" },
+      {
+        id: "m1",
+        year: "",
+        caption: "In the glass",
+        tone: "forest",
+        size: "tall",
+        src: `${import.meta.env.BASE_URL}photos/in-the-glass.png`,
+        alt: "Tania in a champagne gown and Ramy in a beige suit, reflected in a glass panel on a wooden deck",
+        focus: "center 42%",
+      },
+      {
+        id: "m2",
+        year: "",
+        caption: "Golden hour",
+        tone: "champagne",
+        size: "short",
+        src: `${import.meta.env.BASE_URL}photos/golden-hour.png`,
+        alt: "Close portrait of Tania and Ramy laughing, foreheads nearly touching",
+        focus: "62% 40%",
+      },
       { id: "m3", year: "2022", caption: "[MEMORY]", tone: "ivory", size: "mid" },
       { id: "m4", year: "2024", caption: "[MEMORY]", tone: "forest", size: "tall" },
       { id: "m5", year: "2026", caption: "[MEMORY]", tone: "gold", size: "mid" },

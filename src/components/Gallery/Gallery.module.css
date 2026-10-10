@@ -115,6 +115,14 @@
   padding: 0.2rem 0.45rem;
 }
 
+.hasImage .year {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  animation: none;
+  opacity: 1;
+}
+
 @media (hover: hover) {
   .frame:hover {
     transition: transform 0.15s linear, box-shadow 0.6s var(--ease);

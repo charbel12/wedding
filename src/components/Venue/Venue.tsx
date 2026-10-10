@@ -30,7 +30,6 @@ export function Venue() {
           <InView>
             <address className={styles.address}>
               <span>{venue.address}</span>
-              <span>{venue.city}</span>
             </address>
             <p className={styles.note}>{venue.note}</p>
           </InView>
