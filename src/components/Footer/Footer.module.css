@@ -1,0 +1,131 @@
+.footer {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 5.5rem 1.25rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(140vw, 1200px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-gold) 22%, transparent) 0%, transparent 60%);
+  animation: glow 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    scale: 0.9;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.08;
+  }
+}
+
+.inner {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer::before {
+    animation: none;
+  }
+}
+
+.frame {
+  position: absolute;
+  inset: clamp(0.75rem, 2.2vw, 1.35rem);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 55%, transparent);
+  pointer-events: none;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(40rem, 100%);
+}
+
+.mark {
+  width: 4.6rem;
+  height: 4.6rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-gold);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--color-gold);
+}
+
+.kicker {
+  margin-top: 1.5rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.8rem;
+  font-family: var(--font-serif);
+  font-size: clamp(4.2rem, 14vw, 7rem);
+  line-height: 0.86;
+}
+
+.amp {
+  font-style: italic;
+  font-size: 0.55em;
+  line-height: 1.1;
+  color: var(--color-gold);
+}
+
+.line {
+  margin-top: 1.4rem;
+  max-width: 18em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--color-on-primary);
+}
+
+.meta {
+  margin-top: 1.4rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-on-primary-muted);
+}
+
+@media (min-width: 760px) {
+  .names {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.45em;
+    font-size: clamp(4.5rem, 8vw, 6.6rem);
+  }
+}

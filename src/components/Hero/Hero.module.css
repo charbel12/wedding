@@ -1,0 +1,353 @@
+/*
+  The hero is sized entirely from its own box (container units), so the card
+  in the envelope and the full page are the same layout at different sizes —
+  the card can grow into the page without anything jumping.
+*/
+
+.hero {
+  position: relative;
+  container: hero / size;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.page {
+  height: 100vh;
+  height: 100svh;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.paper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 45%, color-mix(in srgb, #fff 55%, var(--color-background)) 0%, transparent 70%),
+    radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, color-mix(in srgb, var(--color-accent) 45%, transparent) 100%);
+}
+
+.frame {
+  --inset: max(10px, 2.3cqmin);
+  position: absolute;
+  inset: var(--inset);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 70%, transparent);
+  pointer-events: none;
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: max(3px, 0.7cqmin);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 32%, transparent);
+}
+
+.corner {
+  position: absolute;
+  width: max(18px, 5.2cqmin);
+  height: max(18px, 5.2cqmin);
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  overflow: visible;
+}
+
+.corner circle {
+  fill: var(--color-gold);
+  stroke: none;
+}
+
+.tl {
+  top: max(6px, 1.3cqmin);
+  left: max(6px, 1.3cqmin);
+}
+
+.tr {
+  top: max(6px, 1.3cqmin);
+  right: max(6px, 1.3cqmin);
+  transform: scaleX(-1);
+}
+
+.bl {
+  bottom: max(6px, 1.3cqmin);
+  left: max(6px, 1.3cqmin);
+  transform: scaleY(-1);
+}
+
+.br {
+  bottom: max(6px, 1.3cqmin);
+  right: max(6px, 1.3cqmin);
+  transform: scale(-1, -1);
+}
+
+.canvas {
+  /* One "unit" of type, tuned for landscape boxes. */
+  --u: min(1cqw, 1.62cqh);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6cqh 6cqw;
+  transform-origin: center 40%;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 0.7);
+  width: calc(var(--u) * 12);
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gold);
+}
+
+.diamond {
+  width: max(5px, calc(var(--u) * 0.42));
+  aspect-ratio: 1;
+  border: 1px solid var(--color-gold);
+  transform: rotate(45deg);
+}
+
+.eyebrow {
+  font-size: max(8px, calc(var(--u) * 0.8));
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.names {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.34em;
+  margin: calc(var(--u) * 0.9) 0 calc(var(--u) * 1.2);
+  font-size: calc(var(--u) * 8.6);
+  line-height: 0.9;
+  font-weight: 400;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.name,
+.amp {
+  font: inherit;
+  line-height: inherit;
+}
+
+.amp {
+  font-style: italic;
+  font-size: 0.66em;
+  line-height: 1;
+}
+
+.ampGlyph {
+  display: inline-block;
+  color: var(--color-gold);
+}
+
+.invite {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: max(11px, calc(var(--u) * 1.85));
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--color-primary);
+  max-width: 18em;
+}
+
+.meta {
+  margin-top: calc(var(--u) * 1.8);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 0.3);
+  font-size: max(7.5px, calc(var(--u) * 0.78));
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.sideline {
+  position: absolute;
+  left: calc(var(--u) * 2.6);
+  top: 50%;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+  font-size: max(7px, calc(var(--u) * 0.66));
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  opacity: 0.8;
+}
+
+@container hero (orientation: portrait) {
+  .canvas {
+    --u: min(4.1cqw, 1.95cqh);
+    padding: 8cqh 8cqw;
+  }
+
+  .names {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: calc(var(--u) * 0.8) 0 calc(var(--u) * 1.1);
+    font-size: calc(var(--u) * 5.1);
+    line-height: 0.86;
+  }
+
+  .amp {
+    padding: 0.14em 0;
+  }
+
+  .ornament {
+    width: calc(var(--u) * 10);
+  }
+
+  .eyebrow {
+    font-size: max(8px, calc(var(--u) * 0.72));
+  }
+
+  .invite {
+    font-size: max(11px, calc(var(--u) * 1.45));
+  }
+
+  .meta {
+    font-size: max(7.5px, calc(var(--u) * 0.7));
+  }
+
+  .sideline {
+    display: none;
+  }
+}
+
+/* Once the page has taken over from the card, the hero keeps breathing. */
+
+.hero[data-live] .ampGlyph {
+  background: linear-gradient(
+      100deg,
+      var(--color-gold) 0%,
+      var(--color-gold) 40%,
+      color-mix(in srgb, var(--color-gold) 30%, #fff) 50%,
+      var(--color-gold) 60%,
+      var(--color-gold) 100%
+    )
+    no-repeat;
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    shimmer 6s ease-in-out 1s infinite,
+    floaty 7s ease-in-out 0.6s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  45%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.06em);
+  }
+}
+
+.hero[data-live] .diamond {
+  animation: spin 9s ease-in-out 1.2s infinite;
+}
+
+@keyframes spin {
+  0%,
+  70% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(225deg);
+  }
+}
+
+.scrollWrap {
+  position: absolute;
+  bottom: max(1.6rem, 4.5cqh);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  font-size: 0.64rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.scroll i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: var(--color-gold);
+  transform-origin: top center;
+  animation: cue 2.4s var(--ease) infinite;
+}
+
+@keyframes cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top center;
+  }
+  50.1% {
+    transform-origin: bottom center;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll i,
+  .hero[data-live] .ampGlyph,
+  .hero[data-live] .diamond {
+    animation: none;
+  }
+}

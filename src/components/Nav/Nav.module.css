@@ -1,0 +1,137 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  /* Sits inside the hero's gold frame until the page scrolls. */
+  padding: 0 max(3rem, calc(6.5vmin + 1.1rem));
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.5s var(--ease),
+    border-color 0.5s var(--ease),
+    padding 0.5s var(--ease),
+    backdrop-filter 0.5s var(--ease);
+}
+
+.scrolled {
+  padding: 0 1.25rem;
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(10px) saturate(1.1);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--color-gold);
+  transform-origin: left center;
+}
+
+@media (min-width: 880px) {
+  .scrolled {
+    padding: 0 2rem;
+  }
+}
+
+.brand {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.links {
+  display: none;
+}
+
+.links a {
+  position: relative;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s var(--ease);
+}
+
+.links a:hover {
+  color: var(--color-gold);
+}
+
+.links a:hover::after {
+  transform: scaleX(1);
+}
+
+.menuButton {
+  min-height: 44px;
+  padding: 0 0.15rem;
+  border: 0;
+  background: none;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 29;
+  display: flex;
+  align-items: center;
+  background: var(--color-background);
+  padding: calc(var(--nav-height) + 1rem) 1.75rem 2rem;
+}
+
+.menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.menu a {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.menu a:hover {
+  color: var(--color-gold);
+}
+
+@media (min-width: 880px) {
+  .links {
+    display: flex;
+    gap: 1.35rem;
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

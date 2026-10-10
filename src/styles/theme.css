@@ -1,0 +1,57 @@
+/*
+  Palette — change these tokens to restyle the entire invitation.
+  Components use the variables below and never raw color values.
+
+  Warm ivory     #F8F4EC   background
+  Soft champagne #E8D8B8   accent
+  Muted sage     #A8B5A0   secondary
+  Deep forest    #344238   primary
+  Charcoal       #292724   text
+  Soft gold      #B89B5E   gold
+
+  Also keep <meta name="theme-color"> in index.html in step with --color-background.
+*/
+
+:root {
+  --color-background: #f8f4ec;
+  --color-surface: #f3eee4;
+  --color-primary: #344238;
+  --color-secondary: #a8b5a0;
+  --color-accent: #e8d8b8;
+  --color-text: #292724;
+  --color-muted: #6e6a62;
+  --color-gold: #b89b5e;
+
+  --color-on-primary: var(--color-background);
+  --color-on-primary-muted: color-mix(in srgb, var(--color-background) 70%, var(--color-secondary));
+
+  --font-serif: "Cormorant Garamond", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-sans: Outfit, "Segoe UI", sans-serif;
+
+  --line: color-mix(in srgb, var(--color-text) 14%, transparent);
+  --line-gold: color-mix(in srgb, var(--color-gold) 80%, transparent);
+  --paper: color-mix(in srgb, var(--color-background) 46%, var(--color-accent));
+  --paper-deep: color-mix(in srgb, var(--color-accent) 70%, var(--color-background));
+  --liner: color-mix(in srgb, var(--color-secondary) 46%, var(--color-background));
+  --shadow: 0 28px 60px color-mix(in srgb, var(--color-text) 12%, transparent);
+
+  /* Envelope scene */
+  --backdrop-light: color-mix(in srgb, var(--color-primary) 82%, var(--color-secondary));
+  --backdrop: var(--color-primary);
+  --backdrop-deep: color-mix(in srgb, var(--color-primary) 62%, #000);
+  --envelope-light: color-mix(in srgb, var(--color-background) 80%, var(--color-accent));
+  --envelope-mid: color-mix(in srgb, var(--color-background) 52%, var(--color-accent));
+  --envelope-shade: color-mix(in srgb, var(--color-accent) 82%, var(--color-muted));
+  --envelope-inside: color-mix(in srgb, var(--color-accent) 70%, var(--color-muted));
+  --liner-base: color-mix(in srgb, var(--color-primary) 86%, var(--color-secondary));
+  --liner-line: color-mix(in srgb, var(--color-gold) 70%, transparent);
+  --liner-motif: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  --wax: #b38b3c;
+  --wax-light: #ecd191;
+  --wax-deep: #6a4a16;
+
+  --space-section: clamp(5.25rem, 12vw, 8.75rem);
+  --page: min(1080px, calc(100% - 2.5rem));
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-height: 4.25rem;
+}

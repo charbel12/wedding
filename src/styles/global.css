@@ -1,0 +1,137 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Keeps the page width identical before and after the envelope hands over. */
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--color-accent) var(--color-background);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: 0.011em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+section {
+  scroll-margin-top: calc(var(--nav-height) + 0.75rem);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-gold) 38%, transparent);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: var(--page);
+  margin-inline: auto;
+}
+
+.boot {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: radial-gradient(ellipse closest-side at 50% 48%, var(--backdrop-light) 0%, var(--backdrop) 55%, var(--backdrop-deep) 100%);
+}
+
+html.gated {
+  background: var(--backdrop-deep);
+}
+
+/* Nothing behind the envelope is visible, so it shouldn't spend frames. */
+html.gated .worldGate *,
+html.gated [data-aurora] * {
+  animation-play-state: paused !important;
+}
+
+#top:focus {
+  outline: none;
+}
+
+.world {
+  position: relative;
+  z-index: 1;
+}
+
+.worldGate {
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.55;
+  transform: translateZ(0);
+  background-image: url("/grain.svg");
+  background-size: 180px 180px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
